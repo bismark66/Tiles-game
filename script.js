@@ -17,6 +17,7 @@ window.onload = shuffle();
 let tile1, tile2;
 countbuttonclick = 0;
 let chosenCardsArray = [];
+let allcardsArray = [];
 
 //css styling function
 function css(element, style) {
@@ -31,7 +32,7 @@ let invert = (event) => {
   if (event.returnValue == true) {
     console.log(event.target.nextElementSibling);
     chosenCardsArray.push(event.target.nextElementSibling);
-
+    //allcardsArray.push(event.target.nextElementSibling);
     tile1 = "t1";
     //eventClassName = event.target.addClass
     eventClassName = event.target.classList.add(tile1);
@@ -47,37 +48,46 @@ let invert = (event) => {
       // alert("you have clicked twice");
       compareText(chosenCardsArray[1], chosenCardsArray[0]);
     }
-    checkForFinish();
 
     console.log(countbuttonclick);
   }
 };
 
 let win = (firstTile, secondTile, sound) => {
-  //alert(text);
+  //alert(text);`
+  console.log(firstTile);
   sound.play();
   sound.loop = false;
   // console.log(firstTile.parentNode);
   firstTile.parentNode.style.clipPath = "circle(0)";
   secondTile.parentNode.style.clipPath = "circle(0)";
-  //checkForFinish();
-  chosenCardsArray = [];
-};
 
-let checkForFinish = () => {
+  allcardsArray.push(firstTile);
+  console.log(allcardsArray);
+  allcardsArray.push(secondTile);
+  console.log(allcardsArray.length);
   let tiles = document
     .querySelector(".container")
     .querySelectorAll(".main-tile");
   console.log(tiles);
-  tiles.forEach((tile) => {
-    console.log(tile.style.clipPath);
-    if (tile.style.clipPath === "circle(0px at 50% 50%)") {
-      alert("you won");
-    }
-  });
+  if (allcardsArray.length == tiles.length) {
+    let newTextPara = document.createElement("p");
+    let newTextParaContent = document.createTextNode(
+      "YOU FINISHED,CONGRATULATIONS !!!!"
+    );
+    // newTextParaContent.style.font = "40px";
+    newTextPara.appendChild(newTextParaContent);
+
+    document.querySelector(".text").innerHTML = "you finished";
+    alert("game over");
+    allcardsArray = [];
+  }
+  chosenCardsArray = [];
 };
+
 //this calls the win function after 1s
 let winFunctionCall = (firstTile, secondTile, winSound) => {
+  console.log(firstTile);
   setTimeout(win, 1000, firstTile, secondTile, winSound);
 };
 
@@ -107,6 +117,7 @@ let lost = (firstTile, secondTile, sound) => {
 
 let compareText = (firstTile, secondTile) => {
   // let { src } = childNodes[1].src;
+  console.log(firstTile);
   const winSound = new Audio("audio/winSound.wav");
   const loseSound = new Audio("audio/lostSound.mp3");
   console.log(secondTile.src);
@@ -129,7 +140,7 @@ function shuffle() {
   const gameStart = new Audio("audio/gameStart.wav");
   gameStart.play();
   gameStart.loop = false;
-
+  gameStart.onended(alert("audio has ended"));
   console.log(
     typeof document.querySelector(".container").querySelectorAll("div")
   );
