@@ -1,18 +1,6 @@
 /** @format */
 
-//const { MODULESPECIFIER_TYPES } = require("@babel/types");
-
 window.onload = shuffle();
-// let getalltiles = document
-//   .querySelector(".main-tile")
-//   .querySelectorAll(".tile");
-// getalltiles.forEach((element) => {
-//   element.addEventListener("mouseover", getall);
-// });
-
-// function getall() {
-//   console.log(getalltiles);
-// }
 
 let tile1, tile2;
 countbuttonclick = 0;
@@ -140,7 +128,7 @@ function shuffle() {
   const gameStart = new Audio("audio/gameStart.wav");
   gameStart.play();
   gameStart.loop = false;
-  gameStart.onended(alert("audio has ended"));
+  //gameStart.onended(alert("audio has ended"));
   console.log(
     typeof document.querySelector(".container").querySelectorAll("div")
   );
@@ -179,7 +167,7 @@ function shuffle() {
     let remove = arr.splice(anynum, 1);
     console.log("filtered left", arr);
     console.log("filter", remove);
-    // arr = remove;
+
     console.log("arr", arr);
 
     console.log(newarr);
@@ -201,69 +189,3 @@ function shuffle() {
     container.replaceChild(newarr[divElem][1], container.childNodes[divElem]);
   }
 }
-
-//console.log(newarr);
-
-// let elems = document.querySelector(".container");
-// console.log(elems.length);
-// elemsLength = elems.childNodes.length;
-// for (a = 0; a < elemsLength; a++) {
-//   elems.removeChild(elems.children[a]);
-// }
-
-// elems.children.removeAll();
-// console.log(elems.children);
-
-//let arr = ["aba", "kojo", "adwoa"];
-//console.log(arr.length);
-//let newarr = [];
-// for (x = 0; x < arr.length; x++) {
-//   console.log(x);
-//   arrLength = arr.length;
-//   console.log(arrLength);
-//   let anynum = Math.floor(Math.random() * arrLength);
-
-//   newarr.push(arr[anynum]);
-
-//   console.log(newarr);
-//   console.log(arr);
-
-//   arr.splice(anynum);
-//   console.log(newarr);
-//   arr.filter(removeElement);
-//   console.log(arr);
-
-//    function removeElement() {
-//      arr[anynum];
-//      return console.log(arr);
-//    }
-//   arrLength--;
-// }
-
-// let x = 0;
-// while (x < 3) {
-//   if (arr.length == 1) {
-//     console.log(arr);
-//     newarr.push(arr);
-//   }
-//   console.log("x value", x);
-//   arrLength = arr.length;
-//   console.log("arrlength", arrLength);
-//   let anynum = Math.floor(Math.random() * arrLength);
-//   console.log("random num", anynum);
-//   newarr.push(arr[anynum]);
-//   console.log("newarr", newarr);
-//   //console.log(newarr);
-//   console.log("original arr", arr);
-//   let remove = arr.splice(anynum, 1);
-//   console.log("filtered left", arr);
-//   console.log("filter", remove);
-//   // arr = remove;
-//   console.log("arr", arr);
-//   console.log(newarr);
-//   x++;
-//   //arrLength--;
-// }
-// console.log(newarr);
-// console.log(newarr.splice(2, 1));
-// document.write(newarr);
